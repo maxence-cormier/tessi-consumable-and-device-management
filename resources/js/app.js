@@ -45,16 +45,27 @@ InertiaProgress.init({
 
  const el = document.getElementById('app')
 
- /*new Vue({
-   render: h => h(App, {
-     props: {
-       initialPage: JSON.parse(el.dataset.page),
-       resolveComponent: name => import(`./pages/${name}`).default,
-     },
-   }),
- }).$mount(el)*/
+ if(app){
+    window.App = new Vue({
+        vuetify,
+        render: h => h(App, {
+            props: {
+                initialPage: JSON.parse(app.dataset.page),
+                resolveComponent: name => import(`./pages/${name}`).then(module => module.default),
+                transformProps: props => {
+                    return {
+                        ...props,
+                        auth: {
+                            user: props.auth.user ? new AuthUser(props.auth.user) : undefined
+                        }
+                    }
+                },
+            },
+        }),
+    }).$mount(app)
+}
 
- if(app) {
+ /*if(app) {
     window.App = new Vue({
         vuetify,
         store,
@@ -74,7 +85,7 @@ InertiaProgress.init({
             goBack: null,
             breadcrumbs: null
         }),*/
-        render: h => h(App, {
+        /*render: h => h(App, {
             props: {
                 initialPage: JSON.parse(app.dataset.page),
                 resolveComponent: name => import(`./pages/${name}`).then(module => module.default),
@@ -89,4 +100,4 @@ InertiaProgress.init({
             },
         }),
     }).$mount(app);
-}
+}*/
