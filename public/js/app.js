@@ -2977,36 +2977,10 @@ _inertiajs_progress__WEBPACK_IMPORTED_MODULE_1__.InertiaProgress.init({
  */
 
 var el = document.getElementById('app');
-/*new Vue({
-  render: h => h(App, {
-    props: {
-      initialPage: JSON.parse(el.dataset.page),
-      resolveComponent: name => import(`./pages/${name}`).default,
-    },
-  }),
-}).$mount(el)*/
 
 if (app) {
   window.App = new Vue({
     vuetify: _modules_vuetify__WEBPACK_IMPORTED_MODULE_2__.default,
-    store: store,
-    metaInfo: {
-      title: 'Chargement...',
-      titleTemplate: '%s - Template',
-      changed: function changed(info) {
-        window.App.winURL = window.location.href;
-        window.App.dynRoute = route();
-        window.App.goBack = info.goBack;
-        window.App.breadcrumbs = info.breadcrumbs;
-      }
-    },
-
-    /*data: vm => ({
-        winURL: null,
-        dynRoute: null,
-        goBack: null,
-        breadcrumbs: null
-    }),*/
     render: function render(h) {
       return h(_inertiajs_inertia_vue__WEBPACK_IMPORTED_MODULE_0__.App, {
         props: {
@@ -3028,6 +3002,43 @@ if (app) {
     }
   }).$mount(app);
 }
+/*if(app) {
+   window.App = new Vue({
+       vuetify,
+       store,
+       metaInfo: {
+           title: 'Chargement...',
+           titleTemplate: '%s - Template',
+           changed(info){
+               window.App.winURL = window.location.href
+               window.App.dynRoute = route()
+               window.App.goBack = info.goBack
+               window.App.breadcrumbs = info.breadcrumbs;
+           }
+       },
+       /*data: vm => ({
+           winURL: null,
+           dynRoute: null,
+           goBack: null,
+           breadcrumbs: null
+       }),*/
+
+/*render: h => h(App, {
+    props: {
+        initialPage: JSON.parse(app.dataset.page),
+        resolveComponent: name => import(`./pages/${name}`).then(module => module.default),
+        transformProps: props => {
+            return {
+                ...props,
+                auth: {
+                    user: props.auth.user ? new AuthUser(props.auth.user) : undefined
+                }
+            }
+        },
+    },
+}),
+}).$mount(app);
+}*/
 
 /***/ }),
 
