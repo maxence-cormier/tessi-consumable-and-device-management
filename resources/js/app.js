@@ -8,17 +8,21 @@ require('./bootstrap');
 import { App, plugin } from '@inertiajs/inertia-vue'
 import { InertiaProgress } from '@inertiajs/progress'
 import vuetify from './modules/vuetify'
+import Vue from 'vue'
+import Vuelidate from 'vuelidate'
 import AuthUser from "./models/AuthUser";
 
 window.Vue = require('vue');
+Vue.mixin({ methods: { route } });
 Vue.use(plugin)
+Vue.use(Vuelidate)
 
 // Add Ziggy routes in Vue properties.
-Vue.mixin({
+/*Vue.mixin({
     methods: {
         route: ( name, params, absolute ) => route(name, params, absolute).url()
     }
-});
+});*/
 
 InertiaProgress.init({
     color: '#FF5252'
