@@ -10,12 +10,14 @@ import { InertiaProgress } from '@inertiajs/progress'
 import vuetify from './modules/vuetify'
 import Vue from 'vue'
 import Vuelidate from 'vuelidate'
+import VueMeta from 'vue-meta'
 import AuthUser from "./models/AuthUser";
 
 window.Vue = require('vue');
 Vue.mixin({ methods: { route } });
 Vue.use(plugin)
 Vue.use(Vuelidate)
+Vue.use(VueMeta)
 
 // Add Ziggy routes in Vue properties.
 /*Vue.mixin({
@@ -52,6 +54,22 @@ InertiaProgress.init({
  if(app){
     window.App = new Vue({
         vuetify,
+        metaInfo: {
+            title: 'Chargement...',
+            titleTemplate: '%s - Template',
+            changed(info){
+                window.App.winURL = window.location.href
+                window.App.dynRoute = route()
+                window.App.goBack = info.goBack
+                window.App.breadcrumbs = info.breadcrumbs;
+            }
+        },
+        data: vm => ({
+            winURL: null,
+            dynRoute: null,
+            goBack: null,
+            breadcrumbs: null
+        }),
         render: h => h(App, {
             props: {
                 initialPage: JSON.parse(app.dataset.page),

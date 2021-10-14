@@ -14,21 +14,19 @@
                     </v-list-item-content>
                 </v-list-item>
             </v-list>
-            <v-list dense nav v-if="authUser.hasAnyPermissions('view_any_users', 'view_any_logs')">
+            <v-list dense nav>
                 <v-list-group prepend-icon="fa-cogs" no-action color="white"
                               :value="$root.dynRoute.current('users.*')">
                     <template v-slot:activator>
                         <v-list-item-title>Système</v-list-item-title>
                     </template>
-                    <v-list-item v-if="authUser.hasPermission('view_any_users')"
-                                 link @click="$inertia.visit(route('users.index'))"
+                    <v-list-item link @click="$inertia.visit(route('users.index'))"
                                  :input-value="$root.dynRoute.current('users.*')">
                         <v-list-item-content>
                             <v-list-item-title>Utilisateurs</v-list-item-title>
                         </v-list-item-content>
                     </v-list-item>
-                    <v-list-item v-if="authUser.hasPermission('view_any_logs')"
-                                 link :href="route('log-viewer::dashboard')" target="_blank">
+                    <v-list-item link :href="route('log-viewer::dashboard')" target="_blank">
                         <v-list-item-content>
                             <v-list-item-title>Logs applicatifs</v-list-item-title>
                         </v-list-item-content>

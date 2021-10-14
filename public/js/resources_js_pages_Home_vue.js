@@ -134,8 +134,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
@@ -702,101 +700,78 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _vm.authUser.hasAnyPermissions("view_any_users", "view_any_logs")
-            ? _c(
-                "v-list",
-                { attrs: { dense: "", nav: "" } },
+          _c(
+            "v-list",
+            { attrs: { dense: "", nav: "" } },
+            [
+              _c(
+                "v-list-group",
+                {
+                  attrs: {
+                    "prepend-icon": "fa-cogs",
+                    "no-action": "",
+                    color: "white",
+                    value: _vm.$root.dynRoute.current("users.*")
+                  },
+                  scopedSlots: _vm._u([
+                    {
+                      key: "activator",
+                      fn: function() {
+                        return [_c("v-list-item-title", [_vm._v("Système")])]
+                      },
+                      proxy: true
+                    }
+                  ])
+                },
                 [
+                  _vm._v(" "),
                   _c(
-                    "v-list-group",
+                    "v-list-item",
                     {
                       attrs: {
-                        "prepend-icon": "fa-cogs",
-                        "no-action": "",
-                        color: "white",
-                        value: _vm.$root.dynRoute.current("users.*")
+                        link: "",
+                        "input-value": _vm.$root.dynRoute.current("users.*")
                       },
-                      scopedSlots: _vm._u(
-                        [
-                          {
-                            key: "activator",
-                            fn: function() {
-                              return [
-                                _c("v-list-item-title", [_vm._v("Système")])
-                              ]
-                            },
-                            proxy: true
-                          }
-                        ],
-                        null,
-                        false,
-                        2850869354
-                      )
+                      on: {
+                        click: function($event) {
+                          _vm.$inertia.visit(_vm.route("users.index"))
+                        }
+                      }
                     },
                     [
-                      _vm._v(" "),
-                      _vm.authUser.hasPermission("view_any_users")
-                        ? _c(
-                            "v-list-item",
-                            {
-                              attrs: {
-                                link: "",
-                                "input-value": _vm.$root.dynRoute.current(
-                                  "users.*"
-                                )
-                              },
-                              on: {
-                                click: function($event) {
-                                  _vm.$inertia.visit(_vm.route("users.index"))
-                                }
-                              }
-                            },
-                            [
-                              _c(
-                                "v-list-item-content",
-                                [
-                                  _c("v-list-item-title", [
-                                    _vm._v("Utilisateurs")
-                                  ])
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _vm.authUser.hasPermission("view_any_logs")
-                        ? _c(
-                            "v-list-item",
-                            {
-                              attrs: {
-                                link: "",
-                                href: _vm.route("log-viewer::dashboard"),
-                                target: "_blank"
-                              }
-                            },
-                            [
-                              _c(
-                                "v-list-item-content",
-                                [
-                                  _c("v-list-item-title", [
-                                    _vm._v("Logs applicatifs")
-                                  ])
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
-                        : _vm._e()
+                      _c(
+                        "v-list-item-content",
+                        [_c("v-list-item-title", [_vm._v("Utilisateurs")])],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-item",
+                    {
+                      attrs: {
+                        link: "",
+                        href: _vm.route("log-viewer::dashboard"),
+                        target: "_blank"
+                      }
+                    },
+                    [
+                      _c(
+                        "v-list-item-content",
+                        [_c("v-list-item-title", [_vm._v("Logs applicatifs")])],
+                        1
+                      )
                     ],
                     1
                   )
                 ],
                 1
               )
-            : _vm._e(),
+            ],
+            1
+          ),
           _vm._v(" "),
           _c("v-divider"),
           _vm._v(" "),
